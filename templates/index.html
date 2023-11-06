@@ -1,0 +1,28 @@
+<!-- Save this as templates/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Movie Recommender</title>
+</head>
+<body>
+<h1>Movie Recommender</h1>
+<form action="/recommend" method="post">
+    <input type="text" name="movie_title" placeholder="Enter a movie title" required>
+    <input type="submit" value="Recommend">
+</form>
+
+<h2>Recommendations based on "{{ user_input }}":</h2>
+<ul>
+    {% if recommendations %}
+        {% for movie in recommendations %}
+        <li>{{ movie['title'] }} - {{ movie['genre'] }}</li>
+        {% endfor %}
+    {% else %}
+        <li>No recommendations available.</li>
+    {% endif %}
+</ul>
+
+</body>
+</html>
